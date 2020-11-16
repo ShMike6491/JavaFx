@@ -1,0 +1,8 @@
+#danger {
+ -fx-background-color: red;
+}
+
+.action {
+ -fx-background-color: blue;
+ -fx-text-fill: white;
+}

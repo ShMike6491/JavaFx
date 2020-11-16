@@ -1,0 +1,40 @@
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<GridPane fx:controller="calculator.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+
+    <stylesheets>
+        <URL value="@/css/styles.css/"/>
+    </stylesheets>
+
+    <TextField fx:id="textField" GridPane.rowIndex="0" GridPane.columnIndex="0" prefWidth="50"/>
+    <HBox GridPane.rowIndex="1" GridPane.columnIndex="0">
+        <VBox >
+            <Button text="1" onAction="#onClick"/>
+            <Button text="4" onAction="#onClick"/>
+            <Button text="7" onAction="#onClick"/>
+            <Button fx:id="danger" text="C" onAction="#reset"/>
+        </VBox>
+        <VBox >
+            <Button text="2" onAction="#onClick"/>
+            <Button text="5" onAction="#onClick"/>
+            <Button text="8" onAction="#onClick"/>
+            <Button text="0" onAction="#onClick"/>
+        </VBox>
+        <VBox >
+            <Button text="3" onAction="#onClick"/>
+            <Button text="6" onAction="#onClick"/>
+            <Button text="9" onAction="#onClick"/>
+            <Button text="=" styleClass="action" onAction="#result"/>
+        </VBox>
+        <VBox >
+            <Button text="+" styleClass="action"  onAction="#action"/>
+            <Button text="-" styleClass="action" onAction="#action"/>
+            <Button text="*" styleClass="action" onAction="#action"/>
+            <Button text="/" styleClass="action" onAction="#action"/>
+        </VBox>
+    </HBox>
+</GridPane>

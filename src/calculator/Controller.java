@@ -8,45 +8,69 @@ import javafx.scene.control.TextField;
 public class Controller {
     @FXML
     public TextField textField;
-    private int num1, num2;
+    private int temp1, temp2;
     private String event = "";
+    private boolean isOperatorClicked = false;
+    private int sum = 0;
+
+    private void calculate () {
+        switch(event) {
+            case "+":
+                sum = temp1+temp2;
+                break;
+            case "-":
+                sum = temp1-temp2;
+                break;
+            case "*":
+                sum = temp1*temp2;
+                break;
+            case "/":
+                sum = temp1/temp2;
+                break;
+            default:
+                temp1 = 0;
+                temp2 = 0;
+        }
+        temp1 = 0;
+        temp2 = 0;
+    }
 
     public void onClick(ActionEvent actionEvent) {
         textField.appendText(((Button)actionEvent.getSource()).getText());
     }
 
     public void reset(ActionEvent actionEvent) {
-        num1 = 0;
-        num2 = 0;
+        isOperatorClicked = false;
+        temp1 = 0;
+        temp2 = 0;
+        sum = 0;
         event = "";
         textField.clear();
     }
 
     public void result(ActionEvent actionEvent) {
-        num2 = Integer.parseInt(textField.getText());
+        temp2 = Integer.parseInt(textField.getText());
         textField.clear();
-        switch(event) {
-            case "+":
-                num1+=num2;
-                break;
-            case "-":
-                num1-=num2;
-                break;
-            case "*":
-                num1*=num2;
-                break;
-            case "/":
-                num1/=num2;
-                break;
-            default:
-                num1 = 0;
-        }
-        textField.appendText(num1 + "");
+        calculate();
+        textField.appendText(sum + "");
+        isOperatorClicked = false;
+        temp1 = 0;
+        temp2 = 0;
+        sum = 0;
+        event = "";
     }
 
     public void action(ActionEvent actionEvent) {
+        if (isOperatorClicked) {
+            temp2 = Integer.parseInt(textField.getText());
+            textField.clear();
+            calculate();
+            temp1 = sum;
+        } else {
+            temp1 = Integer.parseInt(textField.getText());
+            textField.clear();
+        }
         event = ((Button)actionEvent.getSource()).getText();
-        num1 = Integer.parseInt(textField.getText());
-        textField.clear();
+        isOperatorClicked = true;
     }
 }

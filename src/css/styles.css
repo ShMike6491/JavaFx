@@ -6,3 +6,13 @@
  -fx-background-color: blue;
  -fx-text-fill: white;
 }
+
+Button {
+  -fx-padding: 10 20;
+  -fx-border-color: white;
+  -fx-font-size: 16pt;
+}
+
+TextField {
+-fx-padding: 10 30;
+}
